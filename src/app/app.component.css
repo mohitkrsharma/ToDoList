@@ -16,6 +16,9 @@ h2 {
 table {
   border: 1px solid #008080;
 }
+.table-title {
+  text-align: center;
+}
 .task-form {
   display: flex;
   gap: 15px;
