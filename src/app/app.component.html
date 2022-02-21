@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pendingTodo of pendingToDoList;let i = index;">
+      <tr class="table-warning" *ngFor="let pendingTodo of pendingToDoList;let i = index;">
         <th scope="row"><input type="checkbox" class="form-check-input" name="check" id="check"
             (click)="checkEvent1($event,pendingTodo,i)">
         </th>
@@ -35,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let completedToDo of completedToDoList;let i = index;">
+      <tr class="table-success" *ngFor="let completedToDo of completedToDoList;let i = index;">
         <th scope="row"><input type="checkbox" class="form-check-input" name="check" id="check"
             (click)="checkEvent2($event,completedToDo,i)">
         </th>
