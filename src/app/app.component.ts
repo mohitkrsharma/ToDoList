@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
   addTaskForm!: FormGroup;
   customStyle: any = {};
   /* delcaring to do list array */
-  todoList: string[] = [];
+  pendingToDoList: string[] = [];
+  completedToDoList: string[] = [];
   modalService: any;
   closeResult!: string;
   constructor(public dialog: MatDialog) {}
@@ -31,32 +32,41 @@ export class AppComponent implements OnInit {
     ) {
       /* do nothing */
     } else {
-      this.todoList.push(this.addTaskForm.value.taskDetails);
+      this.pendingToDoList.push(this.addTaskForm.value.taskDetails);
       this.addTaskForm.get('taskDetails')?.reset();
     }
   }
 
   /* function for check/uncheck checkbox */
-  checkEvent(event: any, data: string, index: number) {
-    this.index = this.todoList.findIndex((o) => o === data);
+  checkEvent1(event: any, data: string, index: number) {
+    this.index = this.pendingToDoList.findIndex((o) => o === data);
     if (event.target.checked === true) {
-      this.customStyle = {
-        'text-decoration': 'line-through',
-      };
-      console.log('checked');
+      this.completedToDoList.push(data);
+      if (index !== -1) {
+        this.pendingToDoList.splice(index, 1);
+      }
     } else {
-      this.customStyle = {
-        'text-decoration': 'none',
-      };
-      console.log('unchecked');
+      /* do nothing */
+    }
+  }
+
+  checkEvent2(event: any, data: string, index: number) {
+    this.index = this.completedToDoList.findIndex((o) => o === data);
+    if (event.target.checked === true) {
+      this.pendingToDoList.push(data);
+      if (index !== -1) {
+        this.completedToDoList.splice(index, 1);
+      }
+    } else {
+      /* do nothing */
     }
   }
 
   /* delete record function */
-  deleteRecord(data: any) {
-    const index: number = this.todoList.indexOf(data);
+  /*   deleteRecord(data: any) {
+    const index: number = this.pendingToDoList.indexOf(data);
     if (index !== -1) {
-      this.todoList.splice(index, 1);
+      this.pendingToDoList.splice(index, 1);
     }
-  }
+  } */
 }

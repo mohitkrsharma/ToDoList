@@ -5,10 +5,16 @@
 }
 section {
   width: 100%;
+  display: flex;
+  gap: 20px;
+  padding: 15px 30px;
 }
 h2 {
   text-align: center;
-  padding: 15px 30px;
+  padding: 30px 60px;
+}
+table {
+  border: 1px solid #008080;
 }
 .task-form {
   display: flex;
@@ -19,18 +25,13 @@ h2 {
 .add-input {
   width: 50%;
 }
-.table-div {
-  width: 80%;
-  margin-top: 5%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.button-div {
-  display: flex;
-  gap: 10px;
-}
-.update,
-.delete,
 .add-task {
   padding: 5px 10px;
+}
+.completed-task-table td {
+  text-decoration: line-through;
+}
+.pending-taask-div,
+.completed-task-div {
+  width: 100%;
 }
